@@ -1,0 +1,25 @@
+{
+  "name": "lightenv",
+  "version": "1.0.0",
+  "description": "Lightweight Node.js .env parser with no dependencies or config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Warning: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/godmode/lightenv.git"
+  },
+  "keywords": [
+    ".env",
+    "env",
+    "environment",
+    "variables"
+  ],
+  "author": "Scott Lassen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/godmode/lightenv/issues"
+  },
+  "homepage": "https://github.com/godmode/lightenv#readme"
+}
