@@ -1,4 +1,31 @@
 try {
+  const replaceEscapedChar = (char) => {
+    switch(char) {
+      case 't':
+        return '\t';
+      case 'v':
+        return '\v';
+      case '0':
+        return '\0';
+      case 'b':
+        return '\b';
+      case 'f':
+        return '\f';
+      case 'n':
+        return '\n';
+      case 'r':
+        return '\r';
+      case '\'':
+        return '\'';
+      case '"':
+        return '\"';
+      case '\\':
+        return '\\';
+      default:
+        return char;
+    }
+  };
+
   const lines = require('fs').readFileSync('./.env', 'utf-8').split('\n');
 
   lines.forEach((line) => {
@@ -10,7 +37,9 @@ try {
         const value = line.substr(equality + 1, line.length);
 
         if (!process.env[key]) {
-          process.env[key] = value;
+          process.env[key] = value.replace(/\\[tv0bfnr'"\\"]/g, str => {
+            return replaceEscapedChar(str.substr(1, 2));
+          });
         }
       }
     }

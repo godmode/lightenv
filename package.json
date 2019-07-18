@@ -4,7 +4,7 @@
   "description": "Lightweight Node.js .env parser with no dependencies or config",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Warning: no test specified\" && exit 0"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
