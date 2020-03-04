@@ -26,7 +26,7 @@ try {
     }
   };
 
-  const lines = require('fs').readFileSync('./.env', 'utf-8').split('\n');
+  const lines = require('fs').readFileSync('./.env', 'utf-8').split(/(\n|\r)/);
 
   lines.forEach((line) => {
     // a line should have at least 3 characters (k=v)
