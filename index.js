@@ -1,4 +1,10 @@
+const fs = require('fs');
+const path = require('path');
+const fileName = path.join(process.cwd(), '/.env');
+
 try {
+  fs.accessSync(fileName, fs.constants.R_OK);
+
   const replaceEscapedChar = (char) => {
     switch(char) {
       case 't':
@@ -26,7 +32,7 @@ try {
     }
   };
 
-  const lines = require('fs').readFileSync('./.env', 'utf-8').split(/(\n|\r)/);
+  const lines = fs.readFileSync(fileName, 'utf-8').split(/(\n|\r)/);
 
   lines.forEach((line) => {
     // a line should have at least 3 characters (k=v)
@@ -44,4 +50,8 @@ try {
       }
     }
   });
-} catch (err) { console.warn('Warning: .env file not found or loaded.'); }
+} catch (err) {
+  if (process.env.LIGHTENV_DEBUG) {
+    console.warn(err.message);
+  }
+}

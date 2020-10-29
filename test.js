@@ -1,3 +1,4 @@
+process.env.LIGHTENV_DEBUG = true;
 const assert = require('assert');
 require('./index');
 
